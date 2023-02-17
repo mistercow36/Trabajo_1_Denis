@@ -1,7 +1,17 @@
-import './bootstrap';
+//import './bootstrap';
 
-import Alpine from 'alpinejs';
+//import Alpine from 'alpinejs';
 
-window.Alpine = Alpine;
+//window.Alpine = Alpine;
 
-Alpine.start();
+//Alpine.start();
+import { createApp } from 'vue/dist/vue.esm-bundler.js';
+import cronometro from "./componentes/cronometro.vue";
+import tabla from "./componentes/tabla.vue";
+
+createApp({
+    components:{
+        cronometro,
+        tabla,
+    }
+}).mount('#app');

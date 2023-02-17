@@ -12,14 +12,19 @@ class AlumnoController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function index()
     {
         $alumnos = Alumno::all();
-        return view('crud/alumnos',['alumnos' => $alumnos]);
-    }
+        $campos = $alumnos[0]->getAttributes();
+        $campos = array_keys($campos);
+        $campos = json_encode($campos);
 
+        $alumnos = json_encode($alumnos);
+
+        return view('crud/alumnos',['alumnos' => $alumnos, "campos" => $campos, "nombres" => $alumnos]);
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -64,7 +69,7 @@ class AlumnoController extends Controller
     public function edit(Alumno $alumno)
     {
 
-        return view('crud/editar',['alumno' => $alumno]);
+        return view('crud.editar',['alumno' => $alumno]);
         //
     }
 
@@ -77,8 +82,10 @@ class AlumnoController extends Controller
      */
     public function update(UpdateAlumnoRequest $request, Alumno $alumno)
     {
-
-        return view('crud/alumnos',['alumnos' => $alumno]);
+        $valores = $request->input();
+        $alumno->update($valores);
+        $alumnos = Alumno::all();
+        return view('crud.alumnos',['alumnos' => $alumnos]);
         //
     }
 

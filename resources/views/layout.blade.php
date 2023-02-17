@@ -6,9 +6,10 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    @vite('resources/css/app.css')
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body>
+<div id="app" class="tabla">
+<body class="bg-indigo-700 font-medium">
 <header class="h-15vh bg-emerald-300 flex flex-row justify-between">
     <img src="{{asset("images/logo.jpg")}}" alt="logo">
     <h1>Prueba de laravel</h1>
@@ -34,13 +35,17 @@
     </header>
     <nav class="bg-emerald-500 flex flex-row justify-start">
         <a class="w-1/12 bg-gray-800 text-white" href="alumnos">Alumnos</a>
+        <a class="w-1/12 bg-gray-800 text-white" href="productos">Productos</a>
     </nav>
-    <main>
+    <main class="min-h-screen">
         @yield('contenido')
+
+
     </main>
-    <footer class="h-15vh bg-black" style="color: white; height: 50px">
+    <footer class="h-15vh bg-black" style="color: white; height: 50px;">
         @copyrigth pero copia lo que quieras...
     </footer>
-</header>
 </body>
+</div>
+
 </html>

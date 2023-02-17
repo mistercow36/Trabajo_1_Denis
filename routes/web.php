@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AlumnoController;
+use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::view('vue','vue');
 Route::get('/', function () {
     return view('welcome');
 });
@@ -38,3 +39,4 @@ Route::resource('alumnos', AlumnoController::class);
 Route::get('alumnos',[AlumnoController::class, "index"]);
 Route::view('productos', 'productos');
 Route::view('index', 'index');
+Route::resource('productos', ProductoController::class);
